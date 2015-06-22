@@ -7,12 +7,12 @@ import javax.persistence.*;
  */
 @Entity
 @SequenceGenerator(name = "id", sequenceName = "geek_seq")
-@Table(name = "GEEK")
+@Table(name = "GEEKS")
 public class Geek {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-    @Column(name = "ID")
+    @Column(name = "ID_USER")
         private int id;
     @Column(name = "NOM")
         private String nom;
@@ -41,8 +41,8 @@ public class Geek {
     /************************************[ GETTERS ET SETTERS ]***************************************/
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "GEEK_INTERET",joinColumns = @JoinColumn(name = "IDGEEK"),
-            inverseJoinColumns = @JoinColumn(name="IDINTERET"))
+    @JoinTable(name = "RELATION_USER_INTERET",joinColumns = @JoinColumn(name = "ID_GEEK"),
+            inverseJoinColumns = @JoinColumn(name="ID_INTERET"))
     private Set<Interet> interets;
 
     public Set<Interet> getInterets() {

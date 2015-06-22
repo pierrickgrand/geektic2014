@@ -2,21 +2,34 @@ var app = angular.module("geektic", ['ngRoute']);
 
 
 app.config(function($routeProvider){
-    <!-- on indique quel controleur utiliser pour chaque chemin url-->
+
     $routeProvider
         .when('/', {
             templateUrl: '/views/accueil.html',
             controller: 'SearchController'
         })
 
+        .when('/Geeks', {
+            templateUrl: '/views/GetLesGeeks.html',
+            controller: 'AllGeeks'
+        })
+
 });
 
 
 
-<!-- ON CREE UN CONTROLEUR PAR VUES-->
 
 app.controller('SearchController', function($scope, $http) {
     $http.get('/api/hello').success(function(helloMessage) {
         $scope.helloMessage = helloMessage;
+    });
+});
+
+app.controller('AllGeeks', function($scope, $http) {
+    $http.get('/Geeks').success(function(Geeks) {
+        $scope.Geeks = Geeks;
+    });
+    $http.get('/Interets').success(function(Interets) {
+        $scope.Interets = Interets;
     });
 });

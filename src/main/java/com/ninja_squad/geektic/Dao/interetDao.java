@@ -16,6 +16,7 @@ public class InteretDao {
         return  query.getResultList();
     }
     public Interet getInteretById(int id){
+
         return em.find(Interet.class,id);
     }
 

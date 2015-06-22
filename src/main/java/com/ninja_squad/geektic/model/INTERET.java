@@ -8,10 +8,10 @@ import javax.persistence.*;
 public class Interet {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
-    @Column(name = "ID")
+    @Column(name = "ID_INTERET")
     private int id;
 
-    @Column(name = "NOM")
+    @Column(name = "NOM_INTERET")
     public String nom;
 
     @Column(name = "DESCRIPTION")

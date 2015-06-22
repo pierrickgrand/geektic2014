@@ -6,7 +6,7 @@ app.config(function($routeProvider){
     $routeProvider
         .when('/', {
             templateUrl: '/views/accueil.html',
-            controller: 'HelloCtrl'
+            controller: 'SearchController'
         })
 
 });
@@ -15,7 +15,7 @@ app.config(function($routeProvider){
 
 <!-- ON CREE UN CONTROLEUR PAR VUES-->
 
-app.controller('HelloCtrl', function($scope, $http) {
+app.controller('SearchController', function($scope, $http) {
     $http.get('/api/hello').success(function(helloMessage) {
         $scope.helloMessage = helloMessage;
     });

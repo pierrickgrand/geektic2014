@@ -6,9 +6,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class interetDao{
+public class InteretDao {
     @PersistenceContext
     private EntityManager em;
+
     public List<Interet> getAllInteret(){
         String jpql = "Select int from Interet as int";
         TypedQuery<Interet> query = em.createQuery(jpql,Interet.class);
@@ -17,5 +18,9 @@ public class interetDao{
     public Interet getInteretById(int id){
         return em.find(Interet.class,id);
     }
+
+
+
+
 
 }

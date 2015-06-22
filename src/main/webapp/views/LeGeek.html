@@ -1,0 +1,17 @@
+<div style="text-align:center;"><a href="#/" ><button type="button" class="btn btn-default btn-success">Accueil</button></a></div>
+<br>
+<table  class="table table-striped table-hover text-center">
+    <tr >
+        <td style="text-align:right;">Id :</td><td colspan="{{ LeGeek.interets.length }}" >{{ LeGeek.id }}</td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Nom :</td><td colspan="{{ LeGeek.interets.length }}">{{ LeGeek.nom }}</td>
+    </tr>
+    <tr>
+        <td style="text-align:right;">Prenom :</td><td colspan="{{ LeGeek.interets.length }}">{{LeGeek.prenom }}</td>
+    </tr>
+
+    <tr>
+        <td style="text-align:right;">Interets :</td><td  ng-repeat="interet in LeGeek.interets">{{ interet.nom }}</td>
+    </tr>
+</table>

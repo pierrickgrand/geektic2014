@@ -14,6 +14,14 @@ app.config(function($routeProvider){
             controller: 'AllGeeks'
         })
 
+        .when('/Geeks/:sexe', {
+            templateUrl: '/views/GetLesGeeksBySex.html',
+            controller: 'Geeks'})
+
+        .when('/GeeksById/:id', {
+            templateUrl: '/views/LeGeek.html',
+            controller: 'LeGeek'})
+
 });
 
 
@@ -33,3 +41,21 @@ app.controller('AllGeeks', function($scope, $http) {
         $scope.Interets = Interets;
     });
 });
+
+app.controller('Geeks', function($scope, $http, $routeParams) {
+    $http.get('/Geeks' ,{params:{sexe:$routeParams.sexe}} ).success(function(Geeks) {
+        $scope.Geeks = Geeks;
+    });
+    $http.get('/Interets').success(function(Interets) {
+        $scope.Interets = Interets;
+    });
+});
+
+app.controller('LeGeek', function($scope, $http, $routeParams) {
+    $http({
+        url: '/Geeks/' +$routeParams.id,
+        method: 'GET'
+    }).success(function(geekToShow) {
+        $scope.LeGeek = geekToShow;
+    });
+})

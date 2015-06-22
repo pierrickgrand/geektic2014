@@ -33,7 +33,12 @@ public class GeekService {
         return MesGeeks;
     }
 
-
+    @RequestMapping(method = RequestMethod.GET, params= "sexe")
+    public List<Geek> getGeeksBySexe(@RequestParam("sexe") char sexe)
+    {
+        List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
+        return MesGeeks;
+    }
 
 }
 

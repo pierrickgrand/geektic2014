@@ -3,55 +3,67 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "ID", sequenceName = "interet_seq")
+@SequenceGenerator(name = "id", sequenceName = "interet_seq")
 @Table(name = "INTERET")
-public class INTERET {
+public class Interet {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id")
     @Column(name = "ID")
-    private int ID;
+    private int id;
+
     @Column(name = "NOM")
-    public String NOM;
+    public String nom;
+
     @Column(name = "DESCRIPTION")
-    public String DESCRIPTION;
-    public INTERET(String NOM,String DESCRIPTION){
-        this.NOM= NOM;
-        this.DESCRIPTION=DESCRIPTION;
+    public String description;
+
+    public Interet(String nom,String description){
+        this.nom= nom;
+        this.description=description;
     }
-    @ManyToMany(mappedBy = "INTERET")
-    private Set<GEEK> Geek;
+    @ManyToMany(mappedBy = "interets")
 
+    private Set<Geek> geeks;
 
-    public INTERET(int id, String nom, String description) {
-        this.ID = id;
-        this.NOM = nom;
-        this.DESCRIPTION = description;
+    public Interet(){
+
+    }
+    public Interet(int id, String nom, String description) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
     }
     /**-----------------------------------____________________--------------------------------------**/
     /************************************[ GETTERS ET SETTERS ]***************************************/
 
     public int getId() {
-        return ID;
+
+        return id;
     }
 
     public void setId(int id) {
-        this.ID = id;
+
+        this.id = id;
     }
 
     public String getNom() {
-        return NOM;
+
+        return nom;
     }
 
     public void setNom(String nom) {
-        this.NOM = nom;
+
+        this.nom = nom;
     }
 
     public String getDescription() {
-        return DESCRIPTION;
+
+        return description;
     }
 
     public void setDescription(String description) {
-        this.DESCRIPTION = description;
+
+        this.description = description;
     }
 
 

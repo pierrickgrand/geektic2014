@@ -1,5 +1,5 @@
 package com.ninja_squad.geektic.Dao;
-import com.ninja_squad.geektic.model.INTERET;
+import com.ninja_squad.geektic.model.Interet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,13 +9,13 @@ import java.util.List;
 public class interetDao{
     @PersistenceContext
     private EntityManager em;
-    public List<INTERET> getAllInteret(){
+    public List<Interet> getAllInteret(){
         String jpql = "Select int from Interet as int";
-        TypedQuery<INTERET> query = em.createQuery(jpql,INTERET.class);
+        TypedQuery<Interet> query = em.createQuery(jpql,Interet.class);
         return  query.getResultList();
     }
-    public INTERET getInteretById(int id){
-        return em.find(INTERET.class,id);
+    public Interet getInteretById(int id){
+        return em.find(Interet.class,id);
     }
 
 }

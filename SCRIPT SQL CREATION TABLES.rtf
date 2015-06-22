@@ -1,0 +1,34 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 /*cr\'e9ation table geeks */\
+\
+CREATE TABLE PUBLIC.GEEKS\
+(ID_USER NUMERIC NOT NULL,\
+NOM VARCHAR(100) NOT NULL,\
+PRENOM VARCHAR(100) NOT NULL,\
+MDP VARCHAR(100) NOT NULL,\
+LOGIN VARCHAR(25) NOT NULL,\
+AGE NUMERIC(25),\
+SEXE VARCHAR(25) NOT NULL,\
+PRIMARY KEY (ID_USER))\
+\
+/*cr\'e9ation table interet */\
+\
+CREATE TABLE PUBLIC.INTERET\
+(ID_INTERET INTEGER NOT NULL,\
+NOM_INTERET VARCHAR(100) NOT NULL,\
+DESCRIPTION VARCHAR(300),\
+PRIMARY KEY (ID_INTERET),\
+UNIQUE (NOM_INTERET))\
+\
+/*cr\'e9ation de la table relation_user_interet */\
+\
+CREATE TABLE PUBLIC.RELATION_USER_INTERET\
+(ROWID INTEGER NOT NULL,\
+ID_GEEK INTEGER NOT NULL,\
+ID_INTERET INTEGER NOT NULL,\
+PRIMARY KEY (ROWID))}

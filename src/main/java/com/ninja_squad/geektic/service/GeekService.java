@@ -20,11 +20,19 @@ import com.ninja_squad.geektic.model.Geek;
 @RestController
 @Transactional
 @RequestMapping("/Geeks")
-public class GeekService {
+ public class GeekService {
 
 
     @Autowired
     private GeekDao lesGeeks;
+
+
+    @RequestMapping(method = RequestMethod.GET,value = "/{id}")
+    public Geek getGeekById(@PathVariable int id)
+    {
+        Geek monGeek= lesGeeks.getGeekById(id);
+        return monGeek;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Geek> getGeeks()
@@ -33,18 +41,16 @@ public class GeekService {
         return MesGeeks;
     }
 
-    @RequestMapping(method = RequestMethod.GET, params= "sexe")
-    public List<Geek> getGeeksBySexe(@RequestParam("sexe") String sexe)
-    {
+    @RequestMapping(method = RequestMethod.GET, params = "sexe")
+    public List<Geek> getGeeksBySexe(@RequestParam("sexe") String sexe) {
         List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
         return MesGeeks;
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "/{id}")
-    public Geek getGeekById(@PathVariable int id)
-    {
-        Geek monGeek= lesGeeks.getGeekById(id);
-        return monGeek;
+    @RequestMapping(method = RequestMethod.GET, params = "interet")
+    public List<Geek> getGeeksByInteret(@RequestParam("interet") String interet) {
+        List<Geek> MesGeeks = lesGeeks.getGeeksByInteret(interet);
+        return MesGeeks;
     }
 
 }

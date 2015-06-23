@@ -54,6 +54,15 @@ public class Geek {
         this.interets = interets;
     }
 
+    public boolean IsInterestedBy(String competence){
+        for(Object object : interets) {
+            String interet = ((Interet)object).getNom();
+            if(interet.toLowerCase()==competence.toLowerCase()){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public int getId() {
 

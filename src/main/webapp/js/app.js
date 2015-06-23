@@ -14,13 +14,20 @@ app.config(function($routeProvider){
             controller: 'AllGeeks'
         })
 
-        .when('/Geeks/:sexe', {
-            templateUrl: '/views/GetLesGeeksBySex.html',
-            controller: 'Geeks'})
-
         .when('/GeeksById/:id', {
             templateUrl: '/views/LeGeek.html',
-            controller: 'LeGeek'})
+            controller: 'LeGeek'
+        })
+
+        .when('/Geeks/:sexe', {
+            templateUrl: '/views/GetLesGeeksBySex.html',
+            controller: 'Geeks'
+        })
+
+        .when('/Interets/:interet', {
+            templateUrl: '/views/getGeeksByInteret.html',
+            controller: 'Interets'
+        })
 
 });
 
@@ -33,6 +40,15 @@ app.controller('SearchController', function($scope, $http) {
     });
 });
 
+app.controller('LeGeek', function($scope, $http, $routeParams) {
+    $http({
+        url: '/Geeks/' +$routeParams.id,
+        method: 'GET'
+    }).success(function(geekToShow) {
+        $scope.LeGeek = geekToShow;
+    });
+})
+
 app.controller('AllGeeks', function($scope, $http) {
     $http.get('/Geeks').success(function(Geeks) {
         $scope.Geeks = Geeks;
@@ -42,20 +58,20 @@ app.controller('AllGeeks', function($scope, $http) {
     });
 });
 
+
+
 app.controller('Geeks', function($scope, $http, $routeParams) {
     $http.get('/Geeks' ,{params:{sexe:$routeParams.sexe}} ).success(function(Geeks) {
         $scope.Geeks = Geeks;
     });
-    $http.get('/Interets').success(function(Interets) {
-        $scope.Interets = Interets;
-    });
+    //$http.get('/Interets').success(function(Interets) {
+    //    $scope.Interets = Interets;
+    //});
 });
 
-app.controller('LeGeek', function($scope, $http, $routeParams) {
-    $http({
-        url: '/Geeks/' +$routeParams.id,
-        method: 'GET'
-    }).success(function(geekToShow) {
-        $scope.LeGeek = geekToShow;
+app.controller('Interets', function($scope, $http, $routeParams) {
+    $http.get('/Geeks' ,{params:{interet:$routeParams.interet}} ).success(function(Geeks) {
+        $scope.Geeks = Geeks;
     });
-})
+
+});

@@ -9,12 +9,9 @@
 <center>
     <form>
         passion: <br>
-        <input type="text" name="recherche par passion" ng-model = "passion">
-        <input type="button" name="lien1"
-               value="Rechercher"
-               ng-click="search()"
-               style="background-color:#0080FF"
-               style="color:white; font-weight:bold"onclick>
+        <input type="text" name="passion" ng-model = "passion">
+        <a href="#/Interets/{{passion}}">
+            <button type="button" class="btn btn-default btn-warning">RECHERCHER</button></a>
         <br>
     </form>
     <a href="#/Geeks/HOMME">

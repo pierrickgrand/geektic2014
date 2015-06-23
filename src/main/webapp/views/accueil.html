@@ -9,7 +9,7 @@
 <center>
     <form>
         passion: <br>
-        <input type="text" name="passion" ng-model = "passion">
+        <input type="text" name="recherche par passion" ng-model = "passion">
         <input type="button" name="lien1"
                value="Rechercher"
                ng-click="search()"
@@ -17,7 +17,12 @@
                style="color:white; font-weight:bold"onclick>
         <br>
     </form>
+    <a href="#/Geeks/HOMME">
+        <button type="button" class="btn btn-default btn-warning">HOMMES</button></a>
+    <a href="#/Geeks/FEMME">
+        <button type="button" class="btn btn-default btn-warning">FEMMES</button></a>
+    <a href="#/Geeks">
+        <button type="button" class="btn btn-default btn-warning">TOUS</button></a>
 </center>
-
 </body>
 </html>

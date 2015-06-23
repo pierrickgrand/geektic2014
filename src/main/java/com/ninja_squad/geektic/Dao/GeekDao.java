@@ -25,7 +25,7 @@ public class GeekDao {
         return query.getResultList();
     }
 
-    public List<Geek> getAllGeek(char sexe) {
+    public List<Geek> getAllGeek(String sexe) {
         String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe";
         TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
         query.setParameter("sexe", String.valueOf(sexe));
@@ -38,7 +38,7 @@ public class GeekDao {
         query.setParameter("interets", String.valueOf(interets));
         return query.getResultList();
     }
-    public List<Geek> getGeekBySexeAndInteret(char sexe,Set<Interet> interets) {
+    public List<Geek> getGeekBySexeAndInteret(String sexe,Set<Interet> interets) {
         String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe and geek.interets=:interets";
         TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
         query.setParameter("sexe", String.valueOf(sexe));

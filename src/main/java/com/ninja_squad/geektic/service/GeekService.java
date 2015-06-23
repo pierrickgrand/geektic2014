@@ -34,10 +34,17 @@ public class GeekService {
     }
 
     @RequestMapping(method = RequestMethod.GET, params= "sexe")
-    public List<Geek> getGeeksBySexe(@RequestParam("sexe") char sexe)
+    public List<Geek> getGeeksBySexe(@RequestParam("sexe") String sexe)
     {
         List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
         return MesGeeks;
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/{id}")
+    public Geek getGeekById(@PathVariable int id)
+    {
+        Geek monGeek= lesGeeks.getGeekById(id);
+        return monGeek;
     }
 
 }

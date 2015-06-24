@@ -1,11 +1,14 @@
 package com.ninja_squad.geektic.dao;
+import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.geektic.Dao.GeekDao;
 import com.ninja_squad.geektic.model.Geek;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
+import com.ninja_squad.dbsetup.operation.Operation;
 import static org.junit.Assert.assertEquals;
-
+import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 
 
 
@@ -15,6 +18,13 @@ import static org.junit.Assert.assertEquals;
 public class DaoTest extends BaseDaoTest {
     @Autowired
     private GeekDao geekDao;
+
+    @Before
+    public void populateDatabase() { // AVANT CHAQUE TEST ON REMET LA BASE EN ETAT
+        Operation operation = sequenceOf(UtilitaireTest.DELETE_ALL,UtilitaireTest.INSERT_REFERENCE_DATA);
+        DbSetup dbSetup = new DbSetup(destination, operation);
+        dbSetup.launch();
+    }
 
 
     @Test

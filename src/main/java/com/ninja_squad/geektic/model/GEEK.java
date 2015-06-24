@@ -26,6 +26,8 @@ public class Geek {
         private String sexe;
     @Column(name = "AGE")
         private int age;
+    @Column(name = "NB_VUES")
+    private int nb_vues;
 
     public Geek() {
     }
@@ -130,5 +132,13 @@ public class Geek {
     public void setSEXE(String sexe) {
 
         this.sexe = sexe;
+    }
+
+    public int getNb_vues() {
+        return nb_vues;
+    }
+
+    public void setNb_vues(int nb_vues) {
+        this.nb_vues = nb_vues;
     }
 }

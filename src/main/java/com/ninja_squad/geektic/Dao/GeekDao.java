@@ -3,6 +3,7 @@ import com.ninja_squad.geektic.model.Geek;
 import com.ninja_squad.geektic.model.Interet;
 import org.springframework.stereotype.Repository;
 
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -55,8 +56,13 @@ public class GeekDao {
 
 
     public Geek getGeekById(int id) {
+
+        em.find(Geek.class,id).setNb_vues(em.find(Geek.class,id).getNb_vues()+1);
         return em.find(Geek.class, id);
+
     }
+
+    
 
 
 }

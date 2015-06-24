@@ -44,9 +44,11 @@ public class GeekDao {
     }
 
     public List<Geek> getGeeksByInteret(String interet) {
-        String jpql = "SELECT geek FROM Geek as geek WHERE (geek.IsInterestedBy(interet)==true)";
+        //String jpql = "SELECT  geek FROM Geek geek JOIN geek.interets i WHERE i.nom = :interet";
+        String param = "%"+interet.toLowerCase()+"%";
+        String jpql = "SELECT  geek FROM Geek geek JOIN geek.interets i WHERE LOWER (i.nom) LIKE  :param ";
         TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-        query.setParameter("interet", String.valueOf(interet));
+        query.setParameter("param", String.valueOf(param));
         return query.getResultList();
 
     }

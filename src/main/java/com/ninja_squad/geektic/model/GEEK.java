@@ -29,7 +29,8 @@ public class Geek {
 
     public Geek() {
     }
-        public Geek(String nom,String prenom,String login,String mdp,String sexe,int age){
+        public Geek(int id,String nom,String prenom,String login,String mdp,String sexe,int age){
+            this.id=id;
             this.nom= nom;
             this.prenom= prenom;
             this.login=login;

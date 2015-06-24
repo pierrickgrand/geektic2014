@@ -13,9 +13,9 @@ public class UtilitaireTest {
 
     public static final Operation INSERT_REFERENCE_DATA =
             sequenceOf(insertInto("PUBLIC.GEEKS")
-                            .columns("ID_USER", "NOM", "PRENOM", "MDP","LOGIN","AGE","SEXE")
-                            .values(98,"GRAND","Pierrick","pierrick26","05021994","HOMME",21)
-                            .values(99,"DURAND","Remi","remi","remi25","HOMME",25)
+                            .columns("ID_USER", "NOM", "PRENOM", "MDP","LOGIN","AGE","SEXE","NB_VUES")
+                            .values(98,"GRAND","Pierrick","pierrick26","05021994","HOMME",21,0)
+                            .values(99,"DURAND","Remi","remi","remi25","HOMME",25,0)
                             .build());
 }
 

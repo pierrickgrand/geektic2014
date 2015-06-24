@@ -26,7 +26,7 @@ import com.ninja_squad.geektic.model.Geek;
     @Autowired
     private GeekDao lesGeeks;
 
-
+    //service pour recherche d'un geek
     @RequestMapping(method = RequestMethod.GET,value = "/{id}")
     public Geek getGeekById(@PathVariable int id)
     {
@@ -34,6 +34,7 @@ import com.ninja_squad.geektic.model.Geek;
         return monGeek;
     }
 
+    //service pour recherche de tous les geeks
     @RequestMapping(method = RequestMethod.GET)
     public List<Geek> getGeeks()
     {
@@ -41,12 +42,14 @@ import com.ninja_squad.geektic.model.Geek;
         return MesGeeks;
     }
 
+    //service pour recherche par sexe
     @RequestMapping(method = RequestMethod.GET, params = "sexe")
     public List<Geek> getGeeksBySexe(@RequestParam("sexe") String sexe) {
         List<Geek> MesGeeks = lesGeeks.getAllGeek(sexe);
         return MesGeeks;
     }
 
+    //service pour recherche par interet
     @RequestMapping(method = RequestMethod.GET, params = "interet")
     public List<Geek> getGeeksByInteret(@RequestParam("interet") String interet) {
         List<Geek> MesGeeks = lesGeeks.getGeeksByInteret(interet);

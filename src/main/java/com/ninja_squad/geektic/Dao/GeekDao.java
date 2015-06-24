@@ -18,33 +18,22 @@ public class GeekDao {
 
     @PersistenceContext
     private EntityManager em;
-//public List<Geek> getGeekByInteret(Set<Interet> interets) {
-    //    String jpql = "SELECT geek FROM Geek as geek WHERE geek.interets=:interets";
-    //    TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-    //    query.setParameter("interets", String.valueOf(interets));
-    //    return query.getResultList();
-    //}
-    //public List<Geek> getGeekBySexeAndInteret(String sexe,Set<Interet> interets) {
-    //    String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe and geek.interets=:interets";
-    //    TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
-    //    query.setParameter("sexe", String.valueOf(sexe));
-    //    return query.getResultList();
-    //}
 
-    public List<Geek> getAllGeeks() {
+
+    public List<Geek> getAllGeeks() {    // retourne tous les geeks sans distinction
         String jpql = "SELECT geek FROM Geek as geek ";
         TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
         return query.getResultList();
     }
 
-    public List<Geek> getAllGeek(String sexe) {
+    public List<Geek> getAllGeek(String sexe) { // retourne  les geeks par sexe
         String jpql = "SELECT geek FROM Geek as geek WHERE geek.sexe=:sexe";
         TypedQuery<Geek> query = em.createQuery(jpql, Geek.class);
         query.setParameter("sexe", String.valueOf(sexe));
         return query.getResultList();
     }
 
-    public List<Geek> getGeeksByInteret(String interet) {
+    public List<Geek> getGeeksByInteret(String interet) { // retourne les geeks par interet
         //String jpql = "SELECT  geek FROM Geek geek JOIN geek.interets i WHERE i.nom = :interet";
         String param = "%"+interet.toLowerCase()+"%";
         String jpql = "SELECT  geek FROM Geek geek JOIN geek.interets i WHERE LOWER (i.nom) LIKE  :param ";
@@ -55,8 +44,7 @@ public class GeekDao {
     }
 
 
-    public Geek getGeekById(int id) {
-
+    public Geek getGeekById(int id) { // retourne un geek specifique par id + incrementation du nombre de vues du geek
         em.find(Geek.class,id).setNb_vues(em.find(Geek.class,id).getNb_vues()+1);
         return em.find(Geek.class, id);
 
